@@ -52,7 +52,9 @@ function searchClick(event) {
     getWeatherInfo('' + $("#citySearch").val());
 }
 // $('#currentCity').html('<h2>Charlotte ' + moment().format('L') + '</h2>');
-getWeatherInfo(localStorage.getItem('myCity'));
+var myCityVal = localStorage.getItem('myCity');
+if (myCityVal != null && myCityVal != 'null')
+ { getWeatherInfo(myCityVal); } else { getWeatherInfo('Charlotte') }
 // getWeatherInfo('Snowmass');
 $('.sidebar').on('click', 'li', listClick);
 $('.sidebar').on('click', 'button', searchClick);
