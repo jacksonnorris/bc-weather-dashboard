@@ -15,9 +15,10 @@ const getWeatherInfo = async (newCity) => {
         localStorage.setItem('myCity', newCity);
         city = newCity;
         queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&type=accurate&APPID=${apiKey}`;
-        $('#currentCity').html(`<h2>${city} ${moment().format('L')}</h2>`);
         const response = await request(queryURL);
         var results = JSON.stringify(response);
+        var localTime = new Date(JSON.parse(results).dt * 1000).toLocaleDateString("en");
+        $('#currentCity').html(`<h2>${city} ${localTime}</h2>`);
         var temperature = JSON.parse(results).main.temp;
         var wind = JSON.parse(results).wind.speed;
         var humidity = JSON.parse(results).main.humidity;
