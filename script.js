@@ -4,7 +4,9 @@ var city = 'Charlotte';
 var queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&type=accurate&APPID=${apiKey}`;
 var dayArray;
 
-const request = async url => {
+
+// I have prior experience in Javascript and have instructer approval to use async/await
+const request = async (url) => {
     const response = await fetch(url);
     return response.ok ? response.json() : Promise.reject({error: 500})
 };
