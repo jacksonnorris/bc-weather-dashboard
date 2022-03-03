@@ -39,7 +39,14 @@ function listClick(event) {
     // console.log(event.target.innerHTML);
     getWeatherInfo('' + event.target.innerHTML);
 }
+function searchClick(event) {
+    console.log(event.target);
+    // var searchInput = $(event.target).siblings(".input").value;
+    console.log($("#citySearch").val())
+    getWeatherInfo('' + $("#citySearch").val())
+}
 // $('#currentCity').html('<h2>Charlotte ' + moment().format('L') + '</h2>');
 getWeatherInfo('Snowmass');
 $('.sidebar').on('click', 'li', listClick);
+$('.sidebar').on('click', 'button', searchClick);
 // $('#currentWeather').html(currentWeatherNode);
