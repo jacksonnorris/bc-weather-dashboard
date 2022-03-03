@@ -27,13 +27,19 @@ const getWeatherInfo = async (newCity) => {
     } catch (err) { console.log(err); }
 };
 function getDaily(data) {
+    $('#fiveDayForecast').html('');
     data.daily.forEach((value, index) => {
-        if (index > 0) {
+        if (index > 0 && index < 6) {
             var date = new Date(value.dt * 1000).toLocaleDateString("en");
-            $('#5DayForecast').append(`<div><p>${date}</p><p>Temp: ${value.temp.day}</p></div>`)
+            $('#fiveDayForecast').append(`<div><p>${date}</p><p>Condition: ${value.weather[0].description}</p><p>Temp: ${value.temp.day}°F</p><p>Wind: ${value.wind_speed} MPH</p><p>Humidity: ${value.humidity}%</p></div>`)
         }
     });
 }
+function listClick(event) {
+    // console.log(event.target.innerHTML);
+    getWeatherInfo('' + event.target.innerHTML);
+}
 // $('#currentCity').html('<h2>Charlotte ' + moment().format('L') + '</h2>');
 getWeatherInfo('Snowmass');
+$('.sidebar').on('click', 'li', listClick);
 // $('#currentWeather').html(currentWeatherNode);
