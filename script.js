@@ -10,6 +10,7 @@ const request = async url => {
 };
 const getWeatherInfo = async (newCity) => {
     try {
+        localStorage.setItem('myCity', newCity);
         city = newCity;
         queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&type=accurate&APPID=${apiKey}`;
         $('#currentCity').html(`<h2>${city} ${moment().format('L')}</h2>`);
@@ -24,7 +25,12 @@ const getWeatherInfo = async (newCity) => {
         var uvIndex = ocURL.current.uvi;
         getDaily(ocURL);
         $('#currentWeather').html(`<p>Temp: ${temperature}°F</p><p>Wind: ${wind} MPH</p><p>Humidity: ${humidity}%</p><p>UV Index: ${uvIndex}</p>`);
-    } catch (err) { console.log(err); }
+    } catch (err) { 
+        console.log('err', JSON.stringify(err));
+        $('#currentCity').html(`<h2>${city} not found</h2><p>Please try searching again</p>`);
+        $('#fiveDayForecast').html('');
+        $('#currentWeather').html('');
+    }
 };
 function getDaily(data) {
     $('#fiveDayForecast').html('');
@@ -42,11 +48,12 @@ function listClick(event) {
 function searchClick(event) {
     console.log(event.target);
     // var searchInput = $(event.target).siblings(".input").value;
-    console.log($("#citySearch").val())
-    getWeatherInfo('' + $("#citySearch").val())
+    // console.log($("#citySearch").val())
+    getWeatherInfo('' + $("#citySearch").val());
 }
 // $('#currentCity').html('<h2>Charlotte ' + moment().format('L') + '</h2>');
-getWeatherInfo('Snowmass');
+getWeatherInfo(localStorage.getItem('myCity'));
+// getWeatherInfo('Snowmass');
 $('.sidebar').on('click', 'li', listClick);
 $('.sidebar').on('click', 'button', searchClick);
 // $('#currentWeather').html(currentWeatherNode);
