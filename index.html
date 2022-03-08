@@ -8,12 +8,12 @@
     <title>Weather Dashboard</title>
   </head>
   <body>
-    <header>Weather Dashboard</header>
+    <header class="bg-info"><h1>Weather Dashboard</h1></header>
     <div class="row">
       <div class="sidebar col-12 col-2 col-sm-2">
         <h2>Search for a City:</h2>
         <input type="text" id="citySearch" value="" />
-        <button id="searchButton">Search</button>
+        <button id="searchButton" class="bg-primary">Search</button>
         <hr />
         <ul>
           <li id="Atlanta">Atlanta</li>
@@ -27,8 +27,10 @@
         </ul>
       </div>
       <div class="mainContent col-12 col-10 col-sm-10" id="mainContent">
-        <div class="currentCity" id="currentCity"></div>
-        <div class="currentWeather" id="currentWeather"></div>
+        <div class='currentWrapper'>
+          <div class="currentCity" id="currentCity"></div>
+          <div class="currentWeather" id="currentWeather"></div>
+        </div>
         <div class="fiveDayForecast" id="fiveDayForecast"></div>
       </div>
     </div>

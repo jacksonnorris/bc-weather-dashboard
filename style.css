@@ -1,11 +1,62 @@
+header {
+  min-height: 80px;
+  margin-bottom: 10px;
+}
+header h1 {
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+}
+.sidebar {
+  margin-left: 10px;
+  margin-right: -10px;
+}
+.currentWrapper {
+  border: solid 2px black;
+  padding: 20px;
+  margin: 0 10px;
+  border-radius: 10px;
+}
 .fiveDayForecast {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+.fiveDayForecast div {
+  border-color: black;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  max-width: 190px;
 }
 input {
   width: 100%;
 }
 button {
   width: 100%;
+  color: white;
+  border: black 1px solid;
+  border-radius: 10px !important;
+  margin-top: 10px !important;
+}
+hr {
+  border-top: 2px solid rgba(0,0,0,.5) !important;
+}
+ul li {
+  cursor: pointer;
+  list-style: none;
+  font-weight: bold;
+  text-decoration: underline;
+}
+@media (min-width: 576px) {
+  .col-sm-10 {
+    max-width: 79%;
+  }
+}
+@media (max-width: 376px) {
+  .fiveDayForecast div {
+    width: 100%;
+    max-width: -webkit-fill-available;
+    margin: 10px 10px;
+  }
 }
