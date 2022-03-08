@@ -42,15 +42,23 @@ button {
 hr {
   border-top: 2px solid rgba(0,0,0,.5) !important;
 }
+ul {
+  padding-left: 0;
+}
 ul li {
   cursor: pointer;
   list-style: none;
   font-weight: bold;
   text-decoration: underline;
 }
-@media (min-width: 576px) {
+@media (min-width: 577px) {
   .col-sm-10 {
     max-width: 79%;
+  }
+}
+@media (max-width: 576px) {
+  .sidebar {
+    max-width: 95% !important;
   }
 }
 @media (max-width: 376px) {
